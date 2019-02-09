@@ -1,0 +1,42 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+
+    <persistence-unit name="my-persistence-unit">
+        <!--<description>My persistence unit!</description>-->
+        <!--<class>my.package.Entity</class>-->
+        <!--<jar-file>my-entities.jar</jar-file>-->
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+        <!--<mapping-file>file:\\\C:\dev\wrk\XmlMapping\XmlMappings\myMappings.xml</mapping-file>-->
+        <!--<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
+        <!--<jta-data-source>java:app/jdbc/MyDataSource</jta-data-source>-->
+        <!--<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>-->
+        <!--<validation-mode>AUTO</validation-mode>-->
+
+        <properties>
+            <!--<property name="javax.persistence.query.timeout" value="100"/>-->
+            <!--<property name="javax.persistence.validation.group.pre-persist"-->
+            <!--value="javax.validation.groups.MyPersistValidation"/>-->
+
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:postgresql://localhost:5432/jpa-example"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="postgres"/>
+
+            <!-- create, create-drop, update, validate -->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!-- create-tables, create-or-extend-tables, drop-and-create-tables, none -->
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+            <property name="eclipselink.target-database" value="PostgreSQL"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
