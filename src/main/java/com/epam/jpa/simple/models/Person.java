@@ -2,14 +2,17 @@ package com.epam.jpa.simple.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
-//@MappedSuperclass
+//@MappedSuperclass // if we are not care about inheritance and a common ancestor in DB
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Person
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//public abstract class Person
+public class Person
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private long id;
 
     private String name;
@@ -17,6 +20,13 @@ public abstract class Person
     private Title title;
 
     private Date dateOfBirth;
+
+    //@Embedded // if we don't want to create a new table in DB and we are fine with duplicate data
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
+
+    @ElementCollection
+    private List<String> phones;
 
     public long getId()
     {
@@ -56,5 +66,25 @@ public abstract class Person
     public void setDateOfBirth(Date dateOfBirth)
     {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Address getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(final Address address)
+    {
+        this.address = address;
+    }
+
+    public List<String> getPhones()
+    {
+        return phones;
+    }
+
+    public void setPhones(final List<String> phones)
+    {
+        this.phones = phones;
     }
 }

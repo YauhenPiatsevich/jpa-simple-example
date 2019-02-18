@@ -26,7 +26,8 @@ public class JpaExample
 
         entityManager.getTransaction().begin();
         readAllPersonsInheritable(entityManager);
-//        readAllPersons(entityManager);
+        //readAllPersonsInheritableWithHibernate(entityManager);
+        //readAllPersons(entityManager);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
@@ -34,6 +35,12 @@ public class JpaExample
     private static void readAllPersonsInheritable(final EntityManager entityManager)
     {
         entityManager.createQuery("FROM Person p", Person.class).getResultList()
+                .forEach(person -> System.out.println("Person: " + person.getName()));
+    }
+
+    private static void readAllPersonsInheritableWithHibernate(final EntityManager entityManager)
+    {
+        entityManager.createQuery("FROM com.epam.jpa.simple.models.Person", Person.class).getResultList()
                 .forEach(person -> System.out.println("Person: " + person.getName()));
     }
 

@@ -1,6 +1,6 @@
 package com.epam.jpa.simple.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class Employee extends Person
