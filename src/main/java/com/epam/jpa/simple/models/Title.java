@@ -1,6 +1,5 @@
 package com.epam.jpa.simple.models;
 
-public enum Title
-{
+public enum Title {
     MR, MRS, MS, MISS
 }

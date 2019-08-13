@@ -5,18 +5,16 @@ import com.epam.jpa.simple.models.*;
 import java.util.Arrays;
 import java.util.Calendar;
 
-public class UserFactory
-{
+public class UserFactory {
+
     private static final Address address = new Address();
 
-    static
-    {
+    static {
         address.setStreet("Baker Street");
         address.setBuilding("221B");
     }
 
-    public static Customer getCustomer()
-    {
+    public static Customer getCustomer() {
         final Customer customer = new Customer();
         customer.setName("Jon Snow");
         customer.setTitle(Title.MR);
@@ -28,8 +26,7 @@ public class UserFactory
         return customer;
     }
 
-    public static Employee getEmployee()
-    {
+    public static Employee getEmployee() {
         final Employee employee = new Employee();
         employee.setName("Daenerys Targaryen");
         employee.setTitle(Title.MS);
@@ -42,8 +39,7 @@ public class UserFactory
         return employee;
     }
 
-    private static Address getAddress()
-    {
+    private static Address getAddress() {
         return address;
     }
 }

@@ -3,17 +3,15 @@ package com.epam.jpa.simple.models;
 import javax.persistence.*;
 
 @Entity
-public class Employee extends Person
-{
+public class Employee extends Person {
+
     private String position;
 
-    public String getPosition()
-    {
+    public String getPosition() {
         return position;
     }
 
-    public void setPosition(String position)
-    {
+    public void setPosition(String position) {
         this.position = position;
     }
 }
